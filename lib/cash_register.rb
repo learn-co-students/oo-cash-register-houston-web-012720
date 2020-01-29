@@ -8,7 +8,8 @@ class CashRegister
         @total = 0
         @discount = emp_dis.to_f
         @items = []
-        @last_item
+        @last_transaction 
+        # @lats_items = nil
     end
 
     def total 
@@ -17,9 +18,10 @@ class CashRegister
 
 
     def add_item (item, price, qty = 1)
+        @last_items = @items
         qty.times {@items << item}
         @total += price * qty
-        @last_item = price * qty
+        @last_transaction = price * qty
     end
 
     def apply_discount
@@ -37,8 +39,11 @@ class CashRegister
     end
 
     def void_last_transaction
-        @total = @total - @last_item
+        # COME BACK this doesnt change the items array
+        @total = @total - @last_transaction
+        # @items = @last_items
     end
+
 end
 
 
