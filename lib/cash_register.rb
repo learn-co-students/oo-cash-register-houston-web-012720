@@ -26,7 +26,7 @@ def items
 @@items 
 end
 def void_last_transaction
-  self.total = self.total - @last_transaction_cost
+  self.total -= @last_transaction_cost
 end
 
 end
